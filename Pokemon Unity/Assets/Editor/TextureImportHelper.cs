@@ -14,10 +14,10 @@ public class TextureImportHelper : AssetPostprocessor
         TextureImporter importer = assetImporter as TextureImporter;
 
         importer.compressionQuality = 0;
+        importer.spritePixelsPerUnit = 16;
         importer.textureCompression = TextureImporterCompression.Uncompressed;
         importer.filterMode = FilterMode.Point;
-        //uses the largest dimension of the texture to always have the optimal max size
-        importer.maxTextureSize = (texture.width > texture.height) ? texture.width : texture.height;
+        importer.alphaIsTransparency = true;
         //Debug.Log($"Imported:{assetPath}");
     }
 }
