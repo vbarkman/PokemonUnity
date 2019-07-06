@@ -483,7 +483,7 @@ public class PartyHandler : MonoBehaviour
         updateFrames();
         Dialog.drawDialogBox();
         Dialog.drawTextInstant("Choose a Pokémon.");
-        StartCoroutine("animateIcons");
+        StartCoroutine(animateIcons());
         while (running)
         {
             if (Input.GetAxisRaw("Horizontal") > 0)

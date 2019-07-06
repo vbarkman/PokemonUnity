@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
     private int mostRecentDirectionPressed = 0;
     private float directionChangeInputDelay = 0.08f;
 
-//	private SceneTransition sceneTransition;
+    //	private SceneTransition sceneTransition;
 
     private AudioSource PlayerAudio;
 
@@ -218,7 +218,7 @@ public class PlayerMovement : MonoBehaviour
     {
         closestIndex = -1;
         float closestDist = closestDistance = float.PositiveInfinity;
-        
+
         foreach(RaycastHit hitRay in hitRays.Where(x => x.collider.gameObject.GetComponent<MapCollider>() != null && x.distance < closestDist))
         {
             closestDistance = hitRay.distance;
@@ -257,7 +257,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private bool isDirectionKeyHeld(int directionCheck)
+     private bool isDirectionKeyHeld(int directionCheck)
     {
         if ((directionCheck == 0 && Input.GetAxisRaw("Vertical") > 0) ||
             (directionCheck == 1 && Input.GetAxisRaw("Horizontal") > 0) ||
@@ -275,7 +275,7 @@ public class PlayerMovement : MonoBehaviour
         while (true)
         {
             still = true;
-                //the player is still, but if they've just finished moving a space, moving is still true for this frame (see end of coroutine)
+            //the player is still, but if they've just finished moving a space, moving is still true for this frame (see end of coroutine)
             if (canInput)
             {
                 if (!surfing && !bike)
@@ -420,8 +420,8 @@ public class PlayerMovement : MonoBehaviour
     public void updateDirection(int dir)
     {
         direction = dir;
-
-        pawnReflectionSprite.sprite = pawnSprite.sprite = spriteSheet[direction * frames + frame];
+        pawnSprite.sprite = spriteSheet[direction * frames + frame];
+        pawnReflectionSprite.sprite = pawnSprite.sprite;
 
         if (mount.enabled)
         {
@@ -432,7 +432,7 @@ public class PlayerMovement : MonoBehaviour
     private void updateMount(bool enabled, string spriteName = "")
     {
         mount.enabled = enabled;
-        if (!mount.enabled)
+        if (!string.IsNullOrWhiteSpace(spriteName))
         {
             mountSpriteSheet = Resources.LoadAll<Sprite>("PlayerSprites/" + spriteName);
             mount.sprite = mountSpriteSheet[direction];
@@ -682,7 +682,7 @@ public class PlayerMovement : MonoBehaviour
         if ((currentSlope <= 1 && destinationSlope <= 1) && (yDistance <= currentSlope || yDistance <= destinationSlope))
         {
             //if yDistance is greater than both slopes there is a vertical wall between them
-            return movement;
+                return movement;
         }
         return Vector3.zero;
     }
@@ -703,16 +703,16 @@ public class PlayerMovement : MonoBehaviour
             Collider[] hitColliders = Physics.OverlapSphere(transform.position + movement + new Vector3(0, 0.5f, 0), 0.4f);
 
             for (int i = 0; i < hitColliders.Length; i++)
-            {
-                if (hitColliders[i].name.ToLowerInvariant().Contains("_object"))
                 {
-                    objectCollider = hitColliders[i];
+                    if (hitColliders[i].name.ToLowerInvariant().Contains("_object"))
+                    {
+                        objectCollider = hitColliders[i];
+                    }
+                    else if (hitColliders[i].name.ToLowerInvariant().Contains("_transparent"))
+                    {
+                        transparentCollider = hitColliders[i];
+                    }
                 }
-                else if (hitColliders[i].name.ToLowerInvariant().Contains("_transparent"))
-                {
-                    transparentCollider = hitColliders[i];
-                }
-            }
 
             if (objectCollider != null)
             {
@@ -807,7 +807,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 //increment increases slowly to 1 over the frames
                 increment += (1f / speed) * Time.deltaTime;
-                    //speed is determined by how many squares are crossed in one second
+                //speed is determined by how many squares are crossed in one second
                 if (increment > 1)
                 {
                     increment = 1;
