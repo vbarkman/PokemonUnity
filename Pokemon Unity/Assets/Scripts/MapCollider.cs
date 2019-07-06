@@ -11,7 +11,7 @@ public class MapCollider : MonoBehaviour
     public string shorthandCollisionMap;
     public int width;
     public int length;
-
+    public Texture2D collisionVisual;
     public int xModifier;
     public int zModifier;
 
@@ -34,11 +34,11 @@ public class MapCollider : MonoBehaviour
     {
         int mapX =
             Mathf.RoundToInt(Mathf.Round(position.x) - Mathf.Round(transform.position.x) +
-                             Mathf.Floor((float) width / 2f) - xModifier);
+                             Mathf.Floor((float)width / 2f) - xModifier);
         int mapZ =
             Mathf.RoundToInt(length -
                              (Mathf.Round(position.z) - Mathf.Round(transform.position.z) +
-                              Mathf.Floor((float) length / 2f) - zModifier));
+                              Mathf.Floor((float)length / 2f) - zModifier));
 
         if (mapX < 0 || mapX >= width ||
             mapZ < 0 || mapZ >= length)
@@ -58,34 +58,131 @@ public class MapCollider : MonoBehaviour
         int z = 0;
         //contains is an array of every segment of the shorthand
         // (e.g. {"0x10", "2", "1x4", "2", "0x8", "0x10", "2", etc... } )
-        string[] contains = shorthandCollisionMap.Split(' ');
-        string[] contains2;
+        string[] collisionDefinitions = shorthandCollisionMap.Split(' ');
+        string[] definition;
 
-        foreach(string contain in contains)
+        foreach (string contain in collisionDefinitions)
         {
             //contains2 is an array of the tag and quantity in the selected segment of the shorthand
             // (breaks "0x10" into {"0", "10"} ready for processing)
-            contains2 = contain.Split('x');
-
-            calculateCollisionMap(contains2.Length == 1 ? contains2.Length : int.Parse(contains2[1]), int.Parse(contains2[0]));
+            definition = contain.Split('x');
+            var counter = definition.Length == 1 ? 1 : int.Parse(definition[1]);
+            var tag = int.Parse(definition[0]);
+            //bug, restarts from 0 everytime
+            calculateCollisionMap(counter, tag, ref x, ref z);
         }
     }
 
-    public void calculateCollisionMap(int lenght, int tag)
+    public void GenerateCollisionTexture()
     {
-        int x = 0;
-        int z = 0;
-        for (int i = 0; i < lenght; i++)
+        setCollisionMap();
+        collisionVisual = new Texture2D(width, length);
+        for (int z = 0; z < length; z++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                var collisionColor = GetCollisionColor(collisionMap[x, z]);
+                //texture's (0,0) cordinate is at the bottom left corner
+                collisionVisual.SetPixel(x, (length - 1) - z, collisionColor);
+            }
+        }
+        collisionVisual.Apply();
+        //Debug.Log($"Done{width}{length}  {collisionMap[5,5]}: {collisionVisual.GetPixel(5, 5)}");
+    }
+
+    public void ImportCollisionMap(Texture2D texture)
+    {
+        var definitions = "";
+        var count = 0;
+        var tag = -1;
+        for (int z = 0; z < texture.height; z++)
+        {
+            for (int x = 0; x < texture.width; x++)
+            {
+                var color = texture.GetPixel(x, texture.height - 1 - z);
+                var pixelTag = GetCollisionTag(color);
+                if (pixelTag != tag)
+                {
+                    if (count > 0)
+                    {
+                        definitions += $"{tag}x{count} ";
+                    }
+                    tag = pixelTag;
+                    count = 1;
+                }
+                else
+                    count++;
+            }
+        }
+        //make sure the last segment is not forgotten
+        if (count > 0)
+        {
+            definitions += $"{tag}x{count}";
+        }
+        if (!string.IsNullOrWhiteSpace(definitions))
+        {
+            shorthandCollisionMap = definitions;
+            width = texture.width;
+            length = texture.height;
+        }
+        else
+            Debug.LogWarning("Error while importing the collision map !");
+    }
+
+    int GetCollisionTag(Color color)
+    {
+        switch (ColorUtility.ToHtmlStringRGB(color))
+        {
+            //white
+            case "FFFFFF":
+                return 0;
+            //red
+            case "FF0000":
+                return 1;
+            //blue
+            case "0000FF":
+                return 2;
+            //green
+            case "00FF00":
+                return 3;
+            default:
+                return 0;
+        }
+    }
+
+    Color GetCollisionColor(int tag)
+    {
+        switch (tag)
+        {
+            //default
+            case 0:
+                return Color.white;
+            //Impassable
+            case 1:
+                return Color.red;
+            //Surf Water
+            case 2:
+                return Color.blue;
+            //Environment 2
+            case 3:
+                return Color.green;
+            default:
+                return Color.gray;
+        }
+    }
+    public void calculateCollisionMap(int counter, int tag, ref int x, ref int z)
+    {
+        for (int i = 0; i < counter; i++)
         {
             //repeat for multiplier amount of times
-            if (x >= this.width)
+            if (x >= width)
             {
                 //if x exceeds the map width,
                 x = 0;//move to the first x on the next line down
-                z += 1;
+                z++;
             }
             collisionMap[x, z] = tag;//add tag to current co-ordinates
-            x += 1;
+            x++;
         }
     }
 
