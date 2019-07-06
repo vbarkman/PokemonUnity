@@ -642,16 +642,23 @@ public class PlayerMovement : MonoBehaviour
                         destinationMap = mapHit.collider.gameObject.GetComponent<MapCollider>();
                     }
                 }
-                else if ((bridgeHit.collider != null && checkForBridge) || mapHit.collider != null)
+                else if ((bridgeHit.collider != null && checkForBridge))
                 {
                     //if both have been found
                     break; //stop searching
                 }
                 //if bridge has not been found yet
-                if (bridgeHit.collider == null && checkForBridge && hitCollider.collider.gameObject.GetComponent<BridgeHandler>() != null)
+                if (bridgeHit.collider == null && checkForBridge)
                 {
                     //if a collision's gameObject has a BridgeHandler, it is a bridge.
-                    bridgeHit = hitCollider;
+                    if (hitCollider.collider.gameObject.GetComponent<BridgeHandler>() != null)
+                    {
+                        bridgeHit = hitCollider;
+                    }
+                }
+                else if (mapHit.collider != null)
+                {
+                    break;
                 }
             }
         }
@@ -679,10 +686,13 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log("currentSlope: "+currentSlope+", destinationSlope: "+destinationSlope+", yDistance: "+yDistance);
 
         //if either slope is greater than 1 it is too steep.
-        if ((currentSlope <= 1 && destinationSlope <= 1) && (yDistance <= currentSlope || yDistance <= destinationSlope))
+        if (currentSlope <= 1 && destinationSlope <= 1)
         {
             //if yDistance is greater than both slopes there is a vertical wall between them
+            if (yDistance <= currentSlope || yDistance <= destinationSlope)
+            {
                 return movement;
+            }
         }
         return Vector3.zero;
     }

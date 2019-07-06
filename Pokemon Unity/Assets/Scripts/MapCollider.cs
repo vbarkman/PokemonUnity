@@ -69,7 +69,8 @@ public class MapCollider : MonoBehaviour
             var counter = definition.Length == 1 ? 1 : int.Parse(definition[1]);
             var tag = int.Parse(definition[0]);
             //bug, restarts from 0 everytime
-            calculateCollisionMap(counter, tag, ref x, ref z);
+            if (z < length)
+                calculateCollisionMap(counter, tag, ref x, ref z);
         }
     }
 
@@ -180,6 +181,8 @@ public class MapCollider : MonoBehaviour
                 //if x exceeds the map width,
                 x = 0;//move to the first x on the next line down
                 z++;
+                if (z >= length)
+                    return;
             }
             collisionMap[x, z] = tag;//add tag to current co-ordinates
             x++;
