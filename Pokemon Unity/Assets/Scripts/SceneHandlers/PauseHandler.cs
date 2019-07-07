@@ -41,7 +41,7 @@ public class PauseHandler : MonoBehaviour
     private RotatableGUIItem targetIcon;
 
     private bool running;
-
+    private Coroutine animIcon = null;
     void Awake()
     {
         Dialog = GameObject.Find("GUI").GetComponent<DialogBoxHandler>();
@@ -237,8 +237,9 @@ public class PauseHandler : MonoBehaviour
 
         if (targetIcon != null)
         {
-            StopCoroutine(animActiveIcon());
-            StartCoroutine(animActiveIcon());
+            if (animIcon != null)
+                StopCoroutine(animIcon);
+            animIcon = StartCoroutine(animActiveIcon());
             //pulse
             float increment = 0f;
             float pulseSpeed = 0.15f;
@@ -518,7 +519,7 @@ public class PauseHandler : MonoBehaviour
         }
 
 
-        yield return StartCoroutine("closeAnim");
+        yield return StartCoroutine(closeAnim());
 
         this.gameObject.SetActive(false);
     }
