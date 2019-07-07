@@ -96,7 +96,7 @@ public class InteractTrainer : MonoBehaviour
 
         exclaim.SetActive(false);
 
-        StartCoroutine("animateSprite");
+        StartCoroutine(animateSprite());
 
 
         //Check current map
@@ -128,7 +128,7 @@ public class InteractTrainer : MonoBehaviour
 
         if (trainerBehaviour == TrainerBehaviour.Turn)
         {
-            StartCoroutine("turnAtRandom");
+            StartCoroutine(turnAtRandom());
         }
         else
         {
@@ -138,7 +138,7 @@ public class InteractTrainer : MonoBehaviour
             turnableDirections[3] = false;
             if (trainerBehaviour == TrainerBehaviour.Patrol)
             {
-                StartCoroutine("patrolAround");
+                StartCoroutine(patrolAround());
             }
         }
 

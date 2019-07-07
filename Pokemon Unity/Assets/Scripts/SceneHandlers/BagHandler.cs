@@ -1174,7 +1174,7 @@ public class BagHandler : MonoBehaviour
                             StartCoroutine(animateSelection(currentPosition[currentScreen] - 1,
                                 currentPosition[currentScreen]));
                             currentTopPosition[currentScreen] -= 1;
-                            StartCoroutine("scrollScrollBar", -1);
+                            StartCoroutine(scrollScrollBar(-1));
                         }
                         else
                         {
@@ -1216,7 +1216,7 @@ public class BagHandler : MonoBehaviour
                             StartCoroutine(animateSelection(currentPosition[currentScreen] + 1,
                                 currentPosition[currentScreen]));
                             currentTopPosition[currentScreen] += 1;
-                            StartCoroutine("scrollScrollBar", 1);
+                            StartCoroutine(scrollScrollBar(1));
                         }
                         else
                         {
@@ -1566,7 +1566,7 @@ public class BagHandler : MonoBehaviour
                                 Dialog.StartCoroutine(Dialog.drawText(
                                     "Take " + SaveData.currentSave.PC.boxes[0][partyPosition].getName() + "'s Item?"));
                             Dialog.drawChoiceBox();
-                            yield return Dialog.StartCoroutine("choiceNavigate");
+                            yield return Dialog.StartCoroutine(Dialog.choiceNavigate());
                             int chosenIndex = Dialog.chosenIndex;
                             Dialog.undrawDialogBox();
                             Dialog.undrawChoiceBox();

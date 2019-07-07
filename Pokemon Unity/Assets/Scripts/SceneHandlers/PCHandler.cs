@@ -1686,7 +1686,7 @@ public class PCHandler : MonoBehaviour
                         Dialog.drawTextInstant("Continue Box operations?");
                         Dialog.drawChoiceBox();
                         yield return new WaitForSeconds(0.2f);
-                        yield return Dialog.StartCoroutine("choiceNavigate");
+                        yield return Dialog.StartCoroutine(Dialog.choiceNavigate());
                         Dialog.undrawChoiceBox();
                         Dialog.undrawDialogBox();
                         int chosenIndex = Dialog.chosenIndex;

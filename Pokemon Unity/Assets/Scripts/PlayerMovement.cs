@@ -123,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         updateAnimation("walk", walkFPS);
-        StartCoroutine("animateSprite");
+        StartCoroutine(animateSprite());
         animPause = true;
 
         reflect(false);
@@ -398,7 +398,7 @@ public class PlayerMovement : MonoBehaviour
                     Debug.Log(currentMap.getTileTag(transform.position));
                     if (followerScript.canMove)
                     {
-                        followerScript.StartCoroutine("withdrawToBall");
+                        followerScript.StartCoroutine(followerScript.withdrawToBall());
                     }
                     else
                     {
@@ -752,7 +752,7 @@ public class PlayerMovement : MonoBehaviour
                             updateAnimation("walk", walkFPS);
                             speed = walkSpeed;
                             surfing = false;
-                            StartCoroutine("dismount");
+                            StartCoroutine(dismount());
                             BgmHandler.main.PlayMain(accessedAudio, accessedAudioLoopStartSamples);
                         }
 
