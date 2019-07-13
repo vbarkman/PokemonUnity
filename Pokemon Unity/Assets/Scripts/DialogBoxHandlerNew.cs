@@ -3,20 +3,19 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using TMPro;
 
 public class DialogBoxHandlerNew : MonoBehaviour
 {
     public string debugBoxString;
 
-    private Image dialogBox;
-    private Text dialogBoxText;
-    private Text dialogBoxTextShadow;
-    private Image dialogBoxBorder;
+    public Image dialogBox;
+    public TextMeshProUGUI dialogBoxText;
+    public Image dialogBoxBorder;
 
-    private Image choiceBox;
-    private Text choiceBoxText;
-    private Text choiceBoxTextShadow;
-    private Image choiceBoxSelect;
+    public Image choiceBox;
+    public TextMeshProUGUI choiceBoxText;
+    public Image choiceBoxSelect;
 
     public AudioClip selectClip;
 
@@ -35,17 +34,16 @@ public class DialogBoxHandlerNew : MonoBehaviour
 
     void Awake()
     {
-        Transform dialogBoxTrn = transform.Find("DialogBox");
-        dialogBox = dialogBoxTrn.GetComponent<Image>();
-        dialogBoxText = dialogBoxTrn.Find("BoxText").GetComponent<Text>();
-        dialogBoxTextShadow = dialogBoxTrn.Find("BoxTextShadow").GetComponent<Text>();
-        dialogBoxBorder = dialogBoxTrn.Find("BoxBorder").GetComponent<Image>();
+        //Transform dialogBoxTrn = transform.Find("DialogBox");
+        //dialogBox = dialogBoxTrn.GetComponent<Image>();
+        //dialogBoxText = dialogBoxTrn.Find("BoxText").GetComponent<TextMeshProUGUI>();
+        //dialogBoxBorder = dialogBoxTrn.Find("BoxBorder").GetComponent<Image>();
 
-        Transform choiceBoxTrn = transform.Find("ChoiceBox");
-        choiceBox = choiceBoxTrn.GetComponent<Image>();
-        choiceBoxText = choiceBoxTrn.Find("BoxText").GetComponent<Text>();
-        choiceBoxTextShadow = choiceBoxTrn.Find("BoxTextShadow").GetComponent<Text>();
-        choiceBoxSelect = choiceBoxTrn.Find("BoxSelect").GetComponent<Image>();
+        //Transform choiceBoxTrn = transform.Find("ChoiceBox");
+        //choiceBox = choiceBoxTrn.GetComponent<Image>();
+        //choiceBoxText = choiceBoxTrn.Find("BoxText").GetComponent<Text>();
+        //choiceBoxTextShadow = choiceBoxTrn.Find("BoxTextShadow").GetComponent<Text>();
+        //choiceBoxSelect = choiceBoxTrn.Find("BoxSelect").GetComponent<Image>();
 
         defaultDialogLines = Mathf.RoundToInt((dialogBoxBorder.rectTransform.sizeDelta.y - 16f) / 14f);
         defaultChoiceY = Mathf.FloorToInt(choiceBox.rectTransform.localPosition.y);
@@ -62,7 +60,6 @@ public class DialogBoxHandlerNew : MonoBehaviour
             choiceBox.gameObject.SetActive(false);
         }
     }
-
 
     public IEnumerator DrawText(string text)
     {
@@ -193,7 +190,6 @@ public class DialogBoxHandlerNew : MonoBehaviour
                     added += (large) ? "</size>" : "";
 
                     dialogBoxText.text = currentText + added;
-                    dialogBoxTextShadow.text = dialogBoxText.text;
 
                     while (Time.time < startTime + (secPerChar * (i + 1)))
                     {
@@ -203,7 +199,6 @@ public class DialogBoxHandlerNew : MonoBehaviour
 
                 //add a space after every word
                 dialogBoxText.text += " ";
-                dialogBoxTextShadow.text = dialogBoxText.text;
                 while (Time.time < startTime + (secPerChar))
                 {
                     yield return null;
@@ -238,16 +233,13 @@ public class DialogBoxHandlerNew : MonoBehaviour
         dialogBox.color = tint;
         dialogBoxText.text = "";
         dialogBoxText.color = (sign) ? new Color(1f, 1f, 1f, 1f) : new Color(0.0625f, 0.0625f, 0.0625f, 1f);
-        dialogBoxTextShadow.text = dialogBoxText.text;
 
-        dialogBox.rectTransform.sizeDelta = new Vector2(dialogBox.rectTransform.sizeDelta.x,
-            Mathf.Round((float) lines * 14f) + 16f);
-        dialogBoxBorder.rectTransform.sizeDelta = new Vector2(dialogBox.rectTransform.sizeDelta.x,
-            dialogBox.rectTransform.sizeDelta.y);
-        dialogBoxText.rectTransform.localPosition = new Vector3(dialogBoxText.rectTransform.localPosition.x,
-            -37f + Mathf.Round((float) lines * 14f), 0);
-        dialogBoxTextShadow.rectTransform.localPosition = new Vector3(
-            dialogBoxTextShadow.rectTransform.localPosition.x, dialogBoxText.rectTransform.localPosition.y - 1f, 0);
+        //dialogBox.rectTransform.sizeDelta = new Vector2(dialogBox.rectTransform.sizeDelta.x,
+        //    Mathf.Round((float) lines * 14f) + 16f);
+        //dialogBoxBorder.rectTransform.sizeDelta = new Vector2(dialogBox.rectTransform.sizeDelta.x,
+        //    dialogBox.rectTransform.sizeDelta.y);
+        //dialogBoxText.rectTransform.localPosition = new Vector3(dialogBoxText.rectTransform.localPosition.x,
+        //    -37f + Mathf.Round((float) lines * 14f), 0);
 
         if (sign)
         {
@@ -323,12 +315,11 @@ public class DialogBoxHandlerNew : MonoBehaviour
 
         choiceBox.gameObject.SetActive(true);
         choiceBox.sprite = Resources.Load<Sprite>("Frame/choice" + PlayerPrefs.GetInt("frameStyle"));
-        choiceBox.rectTransform.localPosition = new Vector3(171 - width - 1, yPosition - 96, 0);
-        choiceBox.rectTransform.sizeDelta = new Vector2(width, 16f + (14f * choices.Length));
-        choiceBoxSelect.rectTransform.localPosition = new Vector3(8, 9f + (14f * startIndex), 0);
-        choiceBoxText.rectTransform.sizeDelta = new Vector2(width - 30, choiceBox.rectTransform.sizeDelta.y);
-        choiceBoxTextShadow.rectTransform.sizeDelta = new Vector2(choiceBoxText.rectTransform.sizeDelta.x,
-            choiceBoxText.rectTransform.sizeDelta.y);
+        //choiceBox.rectTransform.localPosition = new Vector3(171 - width - 1, yPosition - 96, 0);
+        //choiceBox.rectTransform.sizeDelta = new Vector2(width, 16f + (14f * choices.Length));
+        //choiceBoxSelect.rectTransform.localPosition = new Vector3(8, 9f + (14f * startIndex), 0);
+        //choiceBoxText.rectTransform.sizeDelta = new Vector2(width - 30, choiceBox.rectTransform.sizeDelta.y);
+
 
         choiceBoxText.text = "";
         for (int i = 0; i < choices.Length; i++)
@@ -339,7 +330,6 @@ public class DialogBoxHandlerNew : MonoBehaviour
                 choiceBoxText.text += "\n";
             }
         }
-        choiceBoxTextShadow.text = choiceBoxText.text;
 
         bool selected = false;
         UpdateChosenIndex(startIndex, choices.Length, flavourText);

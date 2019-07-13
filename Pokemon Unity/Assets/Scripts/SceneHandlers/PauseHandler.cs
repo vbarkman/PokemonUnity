@@ -518,7 +518,6 @@ public class PauseHandler : MonoBehaviour
             yield return null;
         }
 
-
         yield return StartCoroutine(closeAnim());
 
         this.gameObject.SetActive(false);

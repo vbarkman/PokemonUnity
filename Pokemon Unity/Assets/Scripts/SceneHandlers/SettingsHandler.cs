@@ -595,7 +595,7 @@ public class SettingsHandler : MonoBehaviour
                 if (draw != null)
                     StopCoroutine(draw);
                 drawDialogBox();
-                draw = StartCoroutine(drawText(selectedOptionText[selectedOption]));
+                draw = StartCoroutine(drawText("Would you like to save the currently \\ selected settings?"));
                 yield return draw;
                 Dialog.drawChoiceBoxNo();
                 yield return new WaitForSeconds(0.2f);

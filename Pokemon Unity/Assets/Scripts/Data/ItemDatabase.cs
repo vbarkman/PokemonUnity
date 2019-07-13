@@ -13,6 +13,17 @@ public static class ItemDatabase
     //It restores the PP of a Pokemon's
     //moves by 10 points at most each.
 
+
+    public static string[] ItemsNameList()
+    {
+        var itemNames = new string[items.Length];
+        for(int i = 0; i < items.Length; i++)
+        {
+            itemNames[i] = items[i].getName();
+        }
+        return itemNames;
+    }
+
     private static ItemData[] items = new ItemData[]
     {
         //Poké Balls
@@ -119,7 +130,10 @@ public static class ItemDatabase
         //Vitamins
         new ItemData("Rare Candy", ItemData.ItemType.MEDICINE, ItemData.BattleType.NONE,
             "A candy that is packed with energy. It\nraises the level of a single Pokémon.", 4800,
-            ItemData.ItemEffect.UNIQUE)
+            ItemData.ItemEffect.UNIQUE),
+        new ItemData("Stone Ball", ItemData.ItemType.ITEM, ItemData.BattleType.NONE,
+            "A strange ball made of stone, what\ncould its use be ?", 100,
+            ItemData.ItemEffect.NONE),
     };
 
     public static int getItemsLength()

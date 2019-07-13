@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: 98aa9d4d57a14b342a7250042d7c7bc3
-timeCreated: 1448804307
-licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: palmTreeTrunkWater_0
@@ -16,53 +14,78 @@ TextureImporter:
     21300018: palmTreeTrunkWater_9
     21300020: palmTreeTrunkWater_10
     21300022: palmTreeTrunkWater_11
-  serializedVersion: 2
+  externalObjects: {}
+  serializedVersion: 9
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -3
   maxTextureSize: 64
   textureSettings:
+    serializedVersion: 2
     filterMode: 0
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 64
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: palmTreeTrunkWater_0
+    - serializedVersion: 2
+      name: palmTreeTrunkWater_0
       rect:
         serializedVersion: 2
         x: 0
@@ -70,9 +93,19 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 7
-      pivot: {x: .5, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: palmTreeTrunkWater_1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ade54e4e43d746845b9d090748edda93
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: palmTreeTrunkWater_1
       rect:
         serializedVersion: 2
         x: 16
@@ -80,9 +113,19 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 7
-      pivot: {x: .5, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: palmTreeTrunkWater_2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8403477e2008451419d4a5b15e5857f5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: palmTreeTrunkWater_2
       rect:
         serializedVersion: 2
         x: 32
@@ -90,9 +133,19 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 7
-      pivot: {x: .5, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: palmTreeTrunkWater_3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94b5b73c4c5b2174cb8b499c475575fe
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: palmTreeTrunkWater_3
       rect:
         serializedVersion: 2
         x: 0
@@ -100,9 +153,19 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 7
-      pivot: {x: .5, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: palmTreeTrunkWater_4
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e420a2c3d3204448bb1d2d65b8c6e2d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: palmTreeTrunkWater_4
       rect:
         serializedVersion: 2
         x: 16
@@ -110,9 +173,19 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 7
-      pivot: {x: .5, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: palmTreeTrunkWater_5
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da222ce4b7f1eb2459a2ba8014f87e51
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: palmTreeTrunkWater_5
       rect:
         serializedVersion: 2
         x: 32
@@ -120,9 +193,19 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 7
-      pivot: {x: .5, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: palmTreeTrunkWater_6
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 054f30ccb3190a945a65794d46bd918a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: palmTreeTrunkWater_6
       rect:
         serializedVersion: 2
         x: 0
@@ -130,9 +213,19 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 7
-      pivot: {x: .5, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: palmTreeTrunkWater_7
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e726ddf73d6ad074eaedd378e7deb350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: palmTreeTrunkWater_7
       rect:
         serializedVersion: 2
         x: 16
@@ -140,9 +233,19 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 7
-      pivot: {x: .5, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: palmTreeTrunkWater_8
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fc59caa591014a4d9440bfd06a5d3c8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: palmTreeTrunkWater_8
       rect:
         serializedVersion: 2
         x: 32
@@ -150,9 +253,19 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 7
-      pivot: {x: .5, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: palmTreeTrunkWater_9
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eeb32d78710c96741b9bf01d4fbaba9f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: palmTreeTrunkWater_9
       rect:
         serializedVersion: 2
         x: 0
@@ -160,9 +273,19 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 7
-      pivot: {x: .5, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: palmTreeTrunkWater_10
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 563f11bb93f47854298b6c88feaa4d86
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: palmTreeTrunkWater_10
       rect:
         serializedVersion: 2
         x: 16
@@ -170,9 +293,19 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 7
-      pivot: {x: .5, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: palmTreeTrunkWater_11
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd7587e233c0d7247bc8260145a7a10a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: palmTreeTrunkWater_11
       rect:
         serializedVersion: 2
         x: 32
@@ -180,9 +313,28 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 7
-      pivot: {x: .5, y: 0}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99db3d41f63fd8c4dbbf11391284b957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
